@@ -16,8 +16,13 @@ const Navbar = () => {
                                 <Icons.logo className="h-10 w-10"/>
                             </Link>
                         </div>
+                        {/* Menu For Desktop*/}
                         <div className='hidden z-50 lg:ml-8 lg:block lg:self-stretch' >
                             <NavItems />
+                        </div>
+                        <div className="ml-auto flex items-center">
+
+
                         </div>
                     </div>
                 </div>
