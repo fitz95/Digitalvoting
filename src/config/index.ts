@@ -31,19 +31,19 @@
             {
                 name: "Editor picks",
                 href: '#',
-                imageSrc: '/nav/buttom_candidates/leading.jpg',
+                imageSrc: '/nav/buttom_candidates/bestsellers.jpg',
 
             },
             {
-                name: "Trending",
+                name: "dissapearing",
                 href: '#',
-                imageSrc: '/nav/buttom_candidates/miss.jpg',
+                imageSrc: '/nav/buttom_candidates/new.jpg',
 
             },
             {
-                name: "on the rise",
+                name: "on the low",
                 href: '#',
-                imageSrc: '/nav/buttom_candidates/winning.jpg',
+                imageSrc: '/nav/buttom_candidates/picks.jpg',
 
             }
 
