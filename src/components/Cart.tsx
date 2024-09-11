@@ -1,14 +1,15 @@
 "use client"
 import React from 'react'
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet'
-import {  ShoppingCart } from 'lucide-react'
+import {  Import, ShoppingCart } from 'lucide-react'
 import { buttonVariants } from "./ui/button";
 import { Separator } from '@radix-ui/react-separator'
 import { formatPrice } from '@/lib/utils'
 import Link from 'next/link'
+import Image from 'next/image';
 
 const Cart = () => {
-    const itemCount = 1
+    const itemCount = 0
     const fee = 100
 
   return <Sheet>
@@ -52,14 +53,35 @@ const Cart = () => {
                         <Link
                           href='/cart'
                           className={buttonVariants({
-                            className: 'w-full',
+                            className: 'w-full text-white',
                         })}
                         > Continue to Checkout</Link>
                     </SheetTitle>
                 </SheetFooter>
               </div>
             </>
-        ) : (<></>)}
+        ) : (
+            <div className='flex h-full flex-col items-center justify-center space-y-1'>
+                <div aria-hidden='true' className='relative mb-4 h-60 w-60 text-muted-foreground'>
+                    <Image
+                      src= '/7612.jpg'
+                      alt='Empty Cart'
+                      fill 
+                    />
+                </div>
+                <div className='text-xl font-semibold'> Your cart is empty</div>
+                <SheetTrigger asChild>
+                    <Link
+                      href='/products'
+                      className={buttonVariants({
+                        variant: 'link',
+                        className: 'text-sm text-muted-foregroung',
+                        size: 'sm',
+                      })}
+                    >Add votes to your cart to checkout  </Link>
+                </SheetTrigger>
+            </div>
+        )}
     </SheetContent>
   </Sheet>
 }
