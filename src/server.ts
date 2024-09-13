@@ -7,26 +7,42 @@ const app = express();
 const PORT = Number(process.env.port) || 3000;
 
 const start = async () => {
-    const payload = await getPayloadClient({
+    try {
+      const payload = await getPayloadClient({
         initOptions: {
-            express: app,
-            onInit: async (cms) => {
-                cms.logger.info('Admin URL: ${cms.getAdminURL()}');    
-            },
+          express: app,
+          onInit: async (cms) => {
+            if (cms?.logger) {
+              cms.logger.info(`Admin URL: ${cms.getAdminURL()}`);
+            } else {
+              console.log('CMS logger not available');
+            }
+          },
         },
-    })
-
-    app.use((req, res) => nextHandler(req, res))
-
-    nextApp.prepare().then(()=>{
-        payload.logger.info('Next.js started')
-
-        app.listen(PORT, async () => {
-            payload.logger.info(
-              `Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`
-            )
-          })
-    })
-}
-
-start()
+      });
+  
+      app.use((req, res) => nextHandler(req, res));
+  
+      await nextApp.prepare();
+      if (payload?.logger) {
+        payload.logger.info('Next.js started');
+      } else {
+        console.log('Payload logger not available');
+      }
+  
+      app.listen(PORT, async () => {
+        if (payload?.logger) {
+          payload.logger.info(
+            `Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`
+          );
+        } else {
+          console.log('Logger not available for Next.js App URL');
+        }
+      });
+    } catch (error) {
+      console.error('Error during initialization:', error);
+    }
+  };
+  
+  start();
+  
