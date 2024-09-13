@@ -1,7 +1,7 @@
 import express from 'express';
 import { getPayloadClient } from './get-payload';
 import { init } from 'next/dist/compiled/webpack/webpack';
-import { nextHandler } from './next-utils';
+import { nextHandler, nextApp } from './next-utils';
 
 const app = express();
 const PORT = Number(process.env.port) || 3000;

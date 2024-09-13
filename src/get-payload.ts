@@ -42,6 +42,7 @@ export const getPayloadClient = async ({
 
     try {
         cached.client = await cached.promise;
+        return cached.client
     } catch (error: unknown) {
         cached.promise = null;
         throw error;
