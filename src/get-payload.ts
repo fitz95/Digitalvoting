@@ -1,4 +1,4 @@
-import payload from 'payload';
+import payload, { Payload } from 'payload';
 import dotenv from 'dotenv';
 import path from 'path';
 import type { InitOptions } from 'payload/config';
@@ -23,7 +23,7 @@ interface Args {
 export const getPayloadClient = async ({
     initOptions
 
-}: Args = {}) => {
+}: Args = {}): Promise<Payload> => {
     if(!process.env.PAYLOAD_SECRET){
         throw new Error('Missing PAYLOAD_SECRET in .env');
     }

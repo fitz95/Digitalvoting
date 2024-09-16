@@ -17,9 +17,7 @@ import {
   AuthCredentialsValidator,
   TAuthCredentialsValidator,
 } from '@/lib/validators/account-credentials-validator'
-// import { trpc } from '@/lib/trpc'
-import { toast } from 'sonner'
-import { ZodError } from 'zod'
+import { trpc } from '@/trpc/client'
 import { useRouter } from 'next/navigation'
 
 const Page = () => {
@@ -30,6 +28,9 @@ const Page = () => {
   } = useForm<TAuthCredentialsValidator>({
     resolver: zodResolver(AuthCredentialsValidator),
   })
+
+  const { data } = trpc.anyApiRoute.useQuery()
+  console.log(data)
 
   const router = useRouter()
 

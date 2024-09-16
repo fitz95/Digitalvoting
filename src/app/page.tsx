@@ -67,7 +67,7 @@ export default function Home() {
       <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Leading Candidates</h2>
         <p className="mt-6 text-lg max-w-prose text-muted-foreground">
-          Here are the top 3 candidates for this year's Miss Twitter237
+          Here are the top 3 candidates for this year`'`s Miss Twitter237 
         </p>
         {/* <div className="flex flex-col sm:flex-row gap-4 mt-6">
           <Link href="/products" className={buttonVariants()}>Browse Candidates</Link>
